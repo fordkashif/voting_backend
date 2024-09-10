@@ -12,22 +12,24 @@ def automate_voting():
     try:
         driver.delete_all_cookies()
 
-        driver.get("https://sterlinggospelawards.com/vote-2024-peoples-choice/")
-        
-        first_button = driver.find_element(By.CSS_SELECTOR, "button[value='welcome']")
-        first_button.click()
+        for i in range(10):
 
-        time.sleep(3)
+            driver.get("https://sterlinggospelawards.com/vote-2024-peoples-choice/")
+            
+            first_button = driver.find_element(By.CSS_SELECTOR, "button[value='welcome']")
+            first_button.click()
 
-        checkbox_labels = ["Sara-Ann Edwards-Miller", "Alive - Sara-Ann Edwards-Miller - LOVE 101 F.M."]
-        for label in checkbox_labels:
-            checkbox = driver.find_element(By.XPATH, f"//div[@class='totalpoll-question-choices-item-label']/span[text()='{label}']")
-            checkbox.click()
+            time.sleep(3)
 
-        submit_button = driver.find_element(By.CSS_SELECTOR, "button[value='vote']")
-        submit_button.click()
+            checkbox_labels = ["Sara-Ann Edwards-Miller", "Alive - Sara-Ann Edwards-Miller - LOVE 101 F.M."]
+            for label in checkbox_labels:
+                checkbox = driver.find_element(By.XPATH, f"//div[@class='totalpoll-question-choices-item-label']/span[text()='{label}']")
+                checkbox.click()
 
-        time.sleep(5)
+            submit_button = driver.find_element(By.CSS_SELECTOR, "button[value='vote']")
+            submit_button.click()
+
+            time.sleep(5)
 
     finally:
         driver.quit()
